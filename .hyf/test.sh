@@ -149,7 +149,7 @@ if [[ -f "$screenshot" ]]; then
     fail "assets/acr_push_week5.png exists but looks empty (${size} bytes)"
   fi
 else
-  fail "assets/acr_push_week5.png missing (Task 6 deliverable)"
+  fail "assets/acr_push_week5.png missing (Task 7 deliverable)"
 fi
 ((score += l7))
 pass "Level 7: ACR screenshot ($l7/10 pts)"

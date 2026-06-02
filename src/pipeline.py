@@ -3,7 +3,7 @@ Week 5 assignment: containerised data pipeline.
 
 Tasks:
 - Task 1: confirm this script runs locally before touching the Dockerfile.
-- Task 4: read all configuration from environment variables (no hardcoded values).
+- Task 5: read all configuration from environment variables (no hardcoded values).
 
 Replace every `raise NotImplementedError` below with a real implementation.
 """
@@ -24,7 +24,7 @@ def get_config() -> dict:
 
     Raise RuntimeError with a clear message if a required variable is missing.
     """
-    raise NotImplementedError("Task 4: read API_KEY and OUTPUT_DIR from the environment")
+    raise NotImplementedError("Task 5: read API_KEY and OUTPUT_DIR from the environment")
 
 
 def fetch_data(api_key: str) -> list[dict]:

@@ -8,33 +8,42 @@ You have a Python pipeline. Your job is to make it reproducible, containerized, 
 week5-container-assignment/
 ├── .github/
 │   └── workflows/
-│       └── ci.yml          ← Task 5: CI workflow (fill in the TODO steps)
+│       └── ci.yml          ← Task 6: CI workflow (fill in the TODO steps)
 ├── src/
-│   └── pipeline.py         ← Task 1 & 4: pipeline logic and env-var config
+│   └── pipeline.py         ← Task 1 & 5: pipeline logic and env-var config
 ├── tests/
-│   └── test_pipeline.py    ← tests that must pass before you touch the Dockerfile
-├── Dockerfile              ← Task 3: write a cache-friendly Dockerfile
+│   └── test_pipeline.py    ← Task 3: provided tests; make them pass
+├── Dockerfile              ← Task 4: write a cache-friendly Dockerfile
 ├── requirements.txt        ← Task 2: pin all dependencies
-└── AI_ASSIST.md            ← Task 7: document your LLM usage
+└── AI_ASSIST.md            ← Task 8: document your LLM usage
 ```
 
 ## Open in Codespaces
 
 > 💻 [Open in GitHub Codespaces](https://github.com/codespaces/new/HackYourFuture/data-assignment-week-5)
 
-Docker and the Azure CLI are pre-installed. Run `az login --use-device-code` before Task 6.
+Docker and the Azure CLI are pre-installed. Before Task 7, sign in with your **HackYourFuture** account (not a personal Azure account), targeting the HackYourFuture tenant:
+
+```bash
+az login --use-device-code --tenant 07a14c4e-d88c-42f7-83b3-13af7e57ff3d
+```
 
 ## Tasks at a glance
 
+These task numbers match the Week 5 assignment chapter in your HackYourFuture Notion curriculum.
+
+> 💡 **Task 7 credentials:** the `AZURE_CREDENTIALS` JSON your CI needs in Task 7 is the same for every student in the cohort. Your teacher DMs it to you over **Slack**. Ping your teacher in your cohort channel if you have not received it by the time you reach Task 7.
+
 | Task | What you do |
 |---|---|
-| 1: Choose a Pipeline | The starter `src/pipeline.py` has three functions with `raise NotImplementedError`. Implement them so the tests pass. |
-| 2: Pin Dependencies | Fill in `requirements.txt` with pinned versions (`package==version`). |
-| 3: Dockerfile | Complete the `Dockerfile` following the TODO comments. |
-| 4: Configuration | `get_config()` must read `API_KEY` from the environment and raise a clear error if it is missing. |
-| 5: CI Workflow | Replace the `echo "TODO"` steps in `ci.yml` with real commands. |
-| 6: Push to ACR | Add Azure login + ACR push steps to your workflow; screenshot the result. |
-| 7: AI Report | Fill in `AI_ASSIST.md` with your LLM prompt, the suggestion, and what you changed. |
+| 1: Choose a Pipeline | The starter `src/pipeline.py` has three functions with `raise NotImplementedError`. Implement them so the provided tests pass. |
+| 2: Define Dependencies | Fill in `requirements.txt` with pinned versions (`package==version`). |
+| 3: Write Tests | The starter ships a full test suite in `tests/test_pipeline.py`. Make your Task 1 implementation pass it: `API_KEY=test pytest -q`. |
+| 4: Write a Dockerfile | Complete the `Dockerfile` following the TODO comments. |
+| 5: Add Configuration | `get_config()` must read `API_KEY` from the environment and raise a clear error if it is missing. |
+| 6: Build a CI Workflow | Replace the `echo "TODO"` steps in `ci.yml` with real commands. |
+| 7: Push to ACR | Add Azure login + ACR push steps to your workflow; screenshot the result. |
+| 8: AI Report | Fill in `AI_ASSIST.md` with your LLM prompt, the suggestion, and what you changed. |
 
 ## How to run locally
 
@@ -44,7 +53,7 @@ pip install -r requirements.txt
 API_KEY=test pytest -q
 ```
 
-## How to run in Docker (after completing Task 3)
+## How to run in Docker (after completing Task 4)
 
 ```bash
 docker build -t my-pipeline:1.0 .
@@ -58,4 +67,4 @@ docker run --rm -e API_KEY=test my-pipeline:1.0
 3. Push and open a Pull Request against `main`.
 4. Share the PR URL with your teacher.
 
-See the [full assignment instructions](https://hackyourfuture.github.io/datatrack/week-5/assignment) for Task 6 (ACR push) and the grading rubric.
+See the [full assignment instructions](https://www.notion.so/hackyourfuture/Assignment-Containerize-and-Ship-2af50f64ffc9819ab20cde5165c0069e) in your HackYourFuture Notion curriculum for the Task 7 (ACR push) steps.

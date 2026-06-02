@@ -1,4 +1,4 @@
-# Task 3: Write a cache-friendly Dockerfile.
+# Task 4: Write a cache-friendly Dockerfile.
 #
 # Requirements (in order):
 # 1. Use python:3.11-slim as the base image.

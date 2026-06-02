@@ -1,6 +1,6 @@
 # AI Assist Report
 
-> Task 7: Fill in all three sections below. Your reflection should be specific —
+> Task 8: Fill in all three sections below. Your reflection should be specific —
 > describe exactly what you asked, what the AI returned, and what you changed.
 > "The AI fixed it" is not enough detail.
 
