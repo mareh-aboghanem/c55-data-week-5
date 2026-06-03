@@ -1,7 +1,6 @@
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import logging
 from pathlib import Path
 import pandas as pd
 
