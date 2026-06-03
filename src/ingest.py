@@ -1,7 +1,6 @@
 import logging
 from pathlib import Path
 import os
-import pandas as pd
 from dotenv import load_dotenv
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
@@ -50,7 +49,7 @@ def download_inputs(data_dir: Path) -> None:
 
 def upload_outputs(output_dir: Path, github_username: str) -> None:
     """Task 7 (extra credit): Upload Parquet outputs to Azure and verify the round-trip."""
-    container_name = f"week4-{github_username}"
+    #container_name = f"week4-{github_username}"
 
     # EXTRA CREDIT — implement this after Tasks 2–6 are working.
     # TODO: Create a BlobServiceClient using DefaultAzureCredential and ACCOUNT_URL.

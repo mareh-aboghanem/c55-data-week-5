@@ -11,7 +11,7 @@ Replace every `raise NotImplementedError` below with a real implementation.
 import os
 import logging
 from pathlib import Path
-from src.ingest import download_inputs, upload_outputs
+from src.ingest import download_inputs
 from src.clean import load_and_explore, clean_sales
 from src.transform import join_customers
 from src.report import build_reports, write_outputs
