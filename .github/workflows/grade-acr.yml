@@ -28,7 +28,7 @@ jobs:
       - name: Build and push image
         id: build
         run: |
-          USERNAME="${{ github.event.pull_request.user.login }}"
+          USERNAME="$(echo '${{ github.event.pull_request.user.login }}' | tr '[:upper:]' '[:lower:]')"
           SHA="${{ github.event.pull_request.head.sha }}"
           IMAGE="hyfregistry.azurecr.io/${USERNAME}-pipeline:${SHA}"
           docker build -t "$IMAGE" .
