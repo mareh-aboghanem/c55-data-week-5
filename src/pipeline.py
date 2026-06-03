@@ -7,6 +7,7 @@ Tasks:
 
 Replace every `raise NotImplementedError` below with a real implementation.
 """
+
 # python -m src.pipeline
 import os
 import logging
@@ -28,7 +29,7 @@ def get_config() -> dict:
     api_key = os.getenv("API_KEY")
     if not api_key:
         raise RuntimeError("API_KEY environment is required but its value is missing.")
-    
+
     output_dirctroy = os.getenv("OUTPUT_DIR", "output")
 
     return {"api_key": api_key, "output_dir": output_dirctroy}
@@ -65,6 +66,7 @@ def save_results(records: list[dict], output_dir: Path) -> None:
         for record in records:
             f.write(f"{record}\n")
     logging.info("Saved %d records to %s", len(records), output_dir / "results.txt")
+
 
 # 5
 def run() -> None:

@@ -11,6 +11,8 @@ load_dotenv(PROJECT_ROOT / ".env")
 load_dotenv()
 
 FILES = ["messy_sales.csv", "messy_customers.csv"]
+
+
 def download_inputs(data_dir: Path) -> None:
     account_url = os.getenv("ACCOUNT_URL")
     source_container = os.getenv("SOURCE_CONTAINER")
@@ -23,7 +25,7 @@ def download_inputs(data_dir: Path) -> None:
     container = service.get_container_client(source_container)
     if not container.exists():
         logging.info(f"Container '{source_container}' not found.")
-        return  
+        return
     data_dir.mkdir(parents=True, exist_ok=True)
     for name in FILES:
         blob = container.get_blob_client(name)
@@ -49,7 +51,7 @@ def download_inputs(data_dir: Path) -> None:
 
 def upload_outputs(output_dir: Path, github_username: str) -> None:
     """Task 7 (extra credit): Upload Parquet outputs to Azure and verify the round-trip."""
-    #container_name = f"week4-{github_username}"
+    # container_name = f"week4-{github_username}"
 
     # EXTRA CREDIT — implement this after Tasks 2–6 are working.
     # TODO: Create a BlobServiceClient using DefaultAzureCredential and ACCOUNT_URL.
@@ -58,6 +60,7 @@ def upload_outputs(output_dir: Path, github_username: str) -> None:
     # TODO: Download customer_summary.parquet back and assert its row count matches the local file.
     # TODO: Log the container name and number of files uploaded.
     pass
+
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
