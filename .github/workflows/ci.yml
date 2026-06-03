@@ -1,5 +1,17 @@
 # Task 6: Build a CI workflow that runs on pull requests and pushes to main.
 # Task 6: Build a CI workflow (Triggering pipeline run)
+#
+# See the assignment chapter for the required steps and commands.
+# Fill in the TODO values below.
+#
+# NOTE on Task 7 (ACR push): you do NOT need to add `azure/login` or `docker
+# push` steps to this file. GitHub blocks repository secrets from running on
+# pull_request workflows that come from a fork, so an `azure/login` step here
+# would fail. A central workflow named "Grade ACR push" on the assignment
+# repo's main branch builds your Dockerfile and pushes it to ACR for you, and
+# comments the image URL on your PR. Your Task 7 deliverable is the
+# `assets/acr_push_week5.png` screenshot (taken from a local `docker push`).
+
 name: CI
 
 on:
