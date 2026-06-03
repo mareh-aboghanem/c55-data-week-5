@@ -1,9 +1,8 @@
 """Tests for the Week 5 pipeline."""
-
+# python -m pytest tests/ -v
 import pytest
-
-from src.pipeline import fetch_data, get_config, save_results
-
+import pandas as pd
+from src.pipeline import fetch_data, get_config, save_results, clean_sales
 
 class TestGetConfig:
     def test_returns_api_key_from_env(self, monkeypatch):
@@ -59,3 +58,31 @@ class TestSaveResults:
         save_results([{"id": 1}, {"id": 2}], tmp_path)
         content = (tmp_path / "results.txt").read_text()
         assert len(content.strip().splitlines()) >= 2
+
+def test_clean_sales_strips_whitespace():
+    mock_sales = pd.DataFrame(
+        {
+            "transaction_id": [1],
+            "product_name": ["  Iphone green  "],
+            "customer_email": ["TEST@example.com"],
+            "price": [999.99],
+            "quantity": [1],
+            "date": ["2026-06-03"],
+        }
+    )
+    cleaned = clean_sales(mock_sales)
+    assert cleaned["product_name"].iloc[0] == "Iphone Green"
+
+def test_clean_sales_handles_empty():
+    mock_sales = pd.DataFrame(
+        {
+            "transaction_id": [1],
+            "product_name": [""],
+            "customer_email": ["TEST@example.com"],
+            "price": [999.99],
+            "quantity": [1],
+            "date": ["2026-06-03"],
+        }
+    )
+    cleaned = clean_sales(mock_sales)
+    assert cleaned["product_name"].iloc[0] == ""

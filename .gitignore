@@ -6,6 +6,9 @@ Thumbs.db
 # hyf
 .hyf/score.json
 
+#My files
+.my_side/
+
 # Editor and IDE settings
 .vscode/
 .idea/

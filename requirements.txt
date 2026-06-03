@@ -1,13 +1,8 @@
-# Task 2: Pin every dependency your pipeline uses.
-#
-# Format: package==version
-# Example: requests==2.31.0
-#
-# Find the current version of any package:
-#   pip show <package>
-#
-# Always include pytest and ruff:
-# pytest==
-# ruff==
-#
-# Add your pinned dependencies below:
+azure-storage-blob
+matplotlib==3.10.9
+pandas==3.0.3
+pytest==9.0.3
+python-dotenv==1.2.2
+pyarrow
+azure-identity
+ruff
