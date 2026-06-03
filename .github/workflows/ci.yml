@@ -1,8 +1,5 @@
 # Task 6: Build a CI workflow that runs on pull requests and pushes to main.
-#
-# See the assignment chapter for the required steps and commands.
-# Fill in the TODO values below.
-
+# Task 6: Build a CI workflow (Triggering pipeline run)
 name: CI
 
 on:
