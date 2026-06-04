@@ -37,13 +37,20 @@ jobs:
         run: pytest -q
       - name: Build image
         run: docker build -t mareh-aboghanem-pipeline:${{ github.sha }} .
+      # The next three steps need the AZURE_CREDENTIALS secret, which GitHub
+      # withholds on pull_request runs from forks for security. The `if:` guard
+      # skips them on fork PRs so CI stays green; the central `Grade ACR push`
+      # workflow on main handles the actual push from base-repo context.
       - name: Azure login
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: ACR login
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
         run: az acr login --name hyfregistry
       - name: Push image
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
         run: |
           docker tag mareh-aboghanem-pipeline:${{ github.sha }} hyfregistry.azurecr.io/mareh-aboghanem-pipeline:${{ github.sha }}
           docker push hyfregistry.azurecr.io/mareh-aboghanem-pipeline:${{ github.sha }}
